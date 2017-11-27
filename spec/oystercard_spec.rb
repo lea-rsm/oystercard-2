@@ -7,7 +7,8 @@ describe Oystercard do
 	end
 
 	it 'can be loaded with money' do
-		oyster = subject.add_money(5)
+		oyster = Oystercard.new
+		oyster.add_money(5)
 		expect(oyster.balance).to eq 5
 	end
 end
