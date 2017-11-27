@@ -1,11 +1,13 @@
-<<<<<<< HEAD
 require "oystercard"
 
 describe Oystercard do
-=======
-require 'oystercard'
 
-describe Oystercard do
-	
->>>>>>> beb2a98fa3f9eb6bd83b00a78b9076d70fa858a4
+	it 'has no money at the beginning' do
+		expect(subject.balance).to eq 0
+	end
+
+	it 'can be loaded with money' do
+		oyster = subject.add_money(5)
+		expect(oyster.balance).to eq 5
+	end
 end
