@@ -4,7 +4,6 @@ class Oystercard
 	MINIMUM_BALANCE = 0	
 	FARE = 2
 
-
 	def initialize
 		@balance = 0
 		@balance_limit = 90
@@ -27,6 +26,7 @@ class Oystercard
 	end	
 
 	def touch_out
+		@balance -= FARE
 		@in_journey = false
 	end
 

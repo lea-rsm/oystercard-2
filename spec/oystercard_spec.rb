@@ -53,8 +53,7 @@ describe Oystercard do
 		it 'deduces a fare when tapping out' do
 			subject.add_money(TEST_ADD_MONEY)
 			subject.touch_in
-			subject.touch_out
-			expect(subject.balance).to eq (TEST_ADD_MONEY - Oystercard::FARE)
+			expect { subject.touch_out }.to change{ subject.balance }.by(-Oystercard::FARE)
 		end
 
 	end
