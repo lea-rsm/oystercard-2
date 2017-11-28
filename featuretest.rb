@@ -1,5 +1,6 @@
 require './lib/oystercard'
 
+
 # parts 4-5
 # # new oyster card
 p oyster = Oystercard.new
@@ -33,5 +34,12 @@ p oyster = Oystercard.new
 # p 'expect false'
 # p oyster.in_journey?
 
-p 'no money should be unable to touch in'
-p 'FAIL' if oyster.touch_in
+# part 9 
+# p 'no money, should be unable to touch in'
+# p 'FAIL' if oyster.touch_in
+
+# part 10
+p oyster.add_money(10)
+p oyster.touch_in
+p oyster.touch_out
+p 'FAIL' if oyster.balance == 10
