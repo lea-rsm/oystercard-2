@@ -25,10 +25,13 @@ p oyster = Oystercard.new
 # p oyster.deduct(2)
 
 # part 8
-p oyster.touch_in
-p 'expect true'
-p oyster.in_journey?
+# p oyster.touch_in
+# p 'expect true'
+# p oyster.in_journey?
 
-p oyster.touch_out
-p 'expect false'
-p oyster.in_journey?
+# p oyster.touch_out
+# p 'expect false'
+# p oyster.in_journey?
+
+p 'no money should be unable to touch in'
+p 'FAIL' if oyster.touch_in
