@@ -2,6 +2,8 @@ require 'oystercard.rb'
 
 describe Oystercard do
 	it { is_expected.to respond_to(:add_money).with(1).argument }
+	it { is_expected.to respond_to(:deduct).with(1).argument }
+
 
 	it 'has no money at the beginning' do
 		expect(subject.balance).to eq 0
@@ -17,7 +19,6 @@ describe Oystercard do
 
 	it 'can have balance deducted' do
 		subject.add_money(5)
-		subject.deduct(2)
-		expect(subject.balance).to eq 3
+		expect{ subject.deduct(2) }.to change{ subject.balance }.by -2
 	end
 end
