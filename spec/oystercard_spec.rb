@@ -30,6 +30,11 @@ describe Oystercard do
 			expect(subject.in_journey?).to be true
 		end
 
+		it 'can touch out when leaving the tube' do
+			subject.touch_out
+			expect(subject.in_journey?).to be false
+		end
+
 	end
 
 end
