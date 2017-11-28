@@ -7,7 +7,6 @@ describe Oystercard do
 
 	TEST_ADD_MONEY = 60
 	TEST_DEDUCT_MONEY = 2
-	FARE = 2
 
 	describe 'balance' do
 		it 'has no money initially' do
@@ -55,7 +54,7 @@ describe Oystercard do
 			subject.add_money(TEST_ADD_MONEY)
 			subject.touch_in
 			subject.touch_out
-			expect(subject.balance).to eq (TEST_ADD_MONEY - FARE)
+			expect(subject.balance).to eq (TEST_ADD_MONEY - Oystercard::FARE)
 		end
 
 	end

@@ -42,4 +42,4 @@ p oyster = Oystercard.new
 p oyster.add_money(10)
 p oyster.touch_in
 p oyster.touch_out
-p 'FAIL' if oyster.balance == 10
+p 'FAIL' if oyster.balance != 10-Oystercard::FARE
