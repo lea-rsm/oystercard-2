@@ -56,7 +56,7 @@ describe Oystercard do
 		it 'remembers the station it was last tapped at' do
 			subject.add_money(ADD_MONEY)
 			subject.touch_in(STATION)
-			expect()
+			expect(subject.entry_station).to eq STATION
 		end
 	end
 end
