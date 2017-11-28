@@ -40,6 +40,11 @@ p oyster = Oystercard.new
 
 # part 10
 p oyster.add_money(10)
+# p oyster.touch_in
+# p oyster.touch_out
+# p 'FAIL' if oyster.balance != 10-Oystercard::MINIMUM_FARE
+
+# part 11
 p oyster.touch_in
-p oyster.touch_out
-p 'FAIL' if oyster.balance != 10-Oystercard::MINIMUM_FARE
+p 'FAIL' if oyster.entry_station.nil?
+

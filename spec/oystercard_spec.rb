@@ -2,7 +2,7 @@ require 'oystercard.rb'
 
 describe Oystercard do
 	it { is_expected.to respond_to(:add_money).with(1).argument }
-	it { is_expected.to respond_to(:touch_in) }
+	it { is_expected.to respond_to(:touch_in).with(1).argument }
 	it { is_expected.to respond_to(:touch_out) }
 
 
@@ -49,6 +49,14 @@ describe Oystercard do
 		it 'deduces a fare when tapping out' do
 			subject.add_money(TEST_ADD_MONEY)
 			expect { subject.touch_out }.to change{ subject.balance }.by(-Oystercard::MINIMUM_FARE)
+		end
+	end
+
+	describe 'stores information about travel' do
+		it 'remembers the station it was last tapped at' do
+			subject.add_money(TEST_ADD_MONEY)
+			subject.touch_in
+			expect()
 		end
 	end
 end
