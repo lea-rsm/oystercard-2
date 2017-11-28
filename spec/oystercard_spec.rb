@@ -30,11 +30,13 @@ describe Oystercard do
 		end
 
 		it 'can touch in when entering the tube' do
+			subject.add_money(60)
 			subject.touch_in
 			expect(subject.in_journey?).to be true
 		end
 
 		it 'can touch out when leaving the tube' do
+			subject.add_money(60)
 			subject.touch_in
 			subject.touch_out
 			expect(subject.in_journey?).to be false
