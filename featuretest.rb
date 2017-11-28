@@ -27,4 +27,8 @@ p oyster = Oystercard.new
 # part 8
 p oyster.touch_in
 p 'expect true'
-p oyster.in_journey
+p oyster.in_journey?
+
+p oyster.touch_out
+p 'expect false'
+p oyster.in_journey?
