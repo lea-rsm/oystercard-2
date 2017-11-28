@@ -2,8 +2,9 @@ require 'oystercard.rb'
 
 describe Oystercard do
 	it { is_expected.to respond_to(:add_money).with(1).argument }
-	it { is_expected.to respond_to(:deduct).with(1).argument }
 	it { is_expected.to respond_to(:touch_in) }
+	it { is_expected.to respond_to(:touch_out) }
+
 
 	TEST_ADD_MONEY = 60
 	TEST_DEDUCT_MONEY = 2
@@ -20,11 +21,6 @@ describe Oystercard do
 		it "has a balance limit of #{Oystercard::BALANCE_LIMIT} Pounds" do
 			subject.add_money(TEST_ADD_MONEY)
 			expect{ subject.add_money(TEST_ADD_MONEY) }.to raise_error "The balance limit is #{Oystercard::BALANCE_LIMIT} pounds"
-		end
-
-		it 'can have balance deducted' do
-			subject.add_money(TEST_ADD_MONEY)
-			expect{ subject.deduct(TEST_DEDUCT_MONEY) }.to change{ subject.balance }.by -TEST_DEDUCT_MONEY
 		end
 	end
 
@@ -52,10 +48,7 @@ describe Oystercard do
 
 		it 'deduces a fare when tapping out' do
 			subject.add_money(TEST_ADD_MONEY)
-			subject.touch_in
-			expect { subject.touch_out }.to change{ subject.balance }.by(-Oystercard::FARE)
+			expect { subject.touch_out }.to change{ subject.balance }.by(-Oystercard::MINIMUM_FARE)
 		end
-
 	end
-
 end
