@@ -6,7 +6,7 @@ describe Oystercard do
 	it { is_expected.to respond_to(:touch_in) }
 
 	describe 'balance' do
-		it 'has no money at the beginning' do
+		it 'has no money initially' do
 			expect(subject.balance).to eq 0
 		end
 
@@ -40,6 +40,9 @@ describe Oystercard do
 			expect(subject.in_journey?).to be false
 		end
 
+		it 'cannot touch in with insufficient funds' do
+			expect { subject.touch_in }.to raise_error "Insufficient Funds!" 
+		end
 	end
 
 end
