@@ -11,6 +11,16 @@ p oyster = Oystercard.new
 # p oyster.balance
 
 # part 6
-p 'expect an error message when adding 91'
-p 'pounds to the oyster card because the limit is 90'
-p oyster.add_money(91)
+# p 'expect an error message when adding 91'
+# p 'pounds to the oyster card because the limit is 90'
+# p oyster.add_money(91)
+
+# part 7
+
+p oyster.add_money(50)
+
+p 'expected balance 50'
+p oyster.balance
+
+p 'expecting to subtract £2'
+p oyster.deduct(2)

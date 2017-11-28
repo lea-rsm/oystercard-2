@@ -7,13 +7,18 @@ class Oystercard
 		@balance_limit = 90
 	end
 
-	def add_money(quantity)
-		raise 'The balance limit is 90 pounds' if balance_full?(quantity)
-		@balance += quantity
+	def add_money(amount)
+		raise 'The balance limit is 90 pounds' if over_limit?(amount)
+		@balance += amount
+	end
+
+	def deduct(amount)
+		@balance -= amount
 	end
 
 	private
-	def balance_full?(quantity)
-		(@balance + quantity) > DEFAULT_LIMIT
+
+	def over_limit?(amount)
+		(@balance + amount) > DEFAULT_LIMIT
 	end
 end
