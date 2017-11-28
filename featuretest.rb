@@ -16,11 +16,15 @@ p oyster = Oystercard.new
 # p oyster.add_money(91)
 
 # part 7
+# p oyster.add_money(50)
 
-p oyster.add_money(50)
+# p 'expected balance 50'
+# p oyster.balance
 
-p 'expected balance 50'
-p oyster.balance
+# p 'expecting to subtract £2'
+# p oyster.deduct(2)
 
-p 'expecting to subtract £2'
-p oyster.deduct(2)
+# part 8
+p oyster.touch_in
+p 'expect true'
+p oyster.in_journey
