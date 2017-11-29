@@ -6,18 +6,17 @@ class Oystercard
 
 	def initialize
 		@balance = 0
-		@balance_limit = 90
 		@in_journey = false
-		@entry_station = ''
+		@entry_station = nil
 	end
 
 	def add_money(amount)
-		raise 'The balance limit is 90 pounds' if over_limit?(amount)
+		raise "The balance limit is #{BALANCE_LIMIT} pounds" if over_limit?(amount)
 		@balance += amount
 	end
 
 	def touch_in(station)
-		raise "Insufficient Funds!" if @balance < 2
+		raise "Insufficient Funds!" if insufficient_funds?
 		@entry_station = station
 		@in_journey = true
 	end	
@@ -39,5 +38,9 @@ class Oystercard
 
 	def over_limit?(amount)
 		(@balance + amount) > BALANCE_LIMIT
+	end
+
+	def insufficient_funds?
+		@balance < MINIMUM_FARE
 	end
 end

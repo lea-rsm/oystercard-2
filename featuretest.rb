@@ -45,6 +45,6 @@ p oyster.add_money(10)
 # p 'FAIL' if oyster.balance != 10-Oystercard::MINIMUM_FARE
 
 # part 11
-p oyster.touch_in
-p 'FAIL' if oyster.entry_station.nil?
+p oyster.touch_in('shoreditch')
+p 'FAIL' if oyster.entry_station != 'shoreditch'
 
