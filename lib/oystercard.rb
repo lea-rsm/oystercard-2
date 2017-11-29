@@ -7,6 +7,7 @@ class Oystercard
 	def initialize
 		@balance = 0
 		@entry_station = nil
+		@exit_station = nil
 		@log = []
 	end
 

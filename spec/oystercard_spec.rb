@@ -46,23 +46,21 @@ describe Oystercard do
 
 
 		describe '#touch out' do
-
-			it 'can touch out when leaving the tube' do
+			before do
 				subject.add_money(ADD_MONEY)
 				subject.touch_in(entry_station)
+			end
+
+			it 'can touch out when leaving the tube' do
 				subject.touch_out(exit_station)
 				expect(subject.in_journey?).to be false
 			end
 
 			it 'deduces a fare when tapping out' do
-				subject.add_money(ADD_MONEY)
-				subject.touch_in(entry_station)
 				expect { subject.touch_out(exit_station) }.to change{ subject.balance }.by(-Oystercard::MINIMUM_FARE)
 			end
 
 			it "should store exit station" do
-				subject.add_money(ADD_MONEY)
-				subject.touch_in(entry_station)
 				subject.touch_out(exit_station)
 				expect(subject.exit_station).to eq exit_station
 			end
@@ -72,16 +70,22 @@ describe Oystercard do
 	end
 
 	describe 'stores information about travel' do
-		it 'remembers the station it was last tapped at' do
+		before do
 			subject.add_money(ADD_MONEY)
 			subject.touch_in(entry_station)
+		end
+
+		it 'remembers the station it was last tapped at' do
 			expect(subject.entry_station).to eq entry_station
 		end
 
 		it "forgets entry station upon touching out" do
-			subject.add_money(ADD_MONEY)
-			subject.touch_in(entry_station)
 			expect { subject.touch_out(exit_station) }.to change{ subject.entry_station }.to be nil
+		end
+
+		it "should store a journey" do
+			subject.touch_out(exit_station)
+			expect(subject.log[-1]).to eq ({ entry_station: entry_station, exit_station: exit_station })
 		end
 	end
 end
