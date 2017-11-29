@@ -1,5 +1,5 @@
 class Oystercard
-	attr_reader :balance, :entry_station, :exit_station
+	attr_reader :balance, :entry_station, :exit_station, :log
 	BALANCE_LIMIT = 90
 	MINIMUM_BALANCE = 0
 	MINIMUM_FARE = 2
@@ -7,7 +7,7 @@ class Oystercard
 	def initialize
 		@balance = 0
 		@entry_station = nil
-		# @log = []
+		@log = []
 	end
 
 	def add_money(amount)
