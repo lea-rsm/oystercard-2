@@ -34,7 +34,7 @@ p oyster = Oystercard.new
 # p 'expect false'
 # p oyster.in_journey?
 
-# part 9 
+# part 9
 # p 'no money, should be unable to touch in'
 # p 'FAIL' if oyster.touch_in
 
@@ -45,6 +45,10 @@ p oyster.add_money(10)
 # p 'FAIL' if oyster.balance != 10-Oystercard::MINIMUM_FARE
 
 # part 11
-p oyster.touch_in('shoreditch')
-p 'FAIL' if oyster.entry_station != 'shoreditch'
+# p oyster.touch_in('shoreditch')
+# p 'FAIL' if oyster.entry_station != 'shoreditch'
 
+#part 12
+p oyster.touch_in("shoreditch")
+p oyster.touch_out("picadilly")
+p "FAIL" if oyster.log.empty?
