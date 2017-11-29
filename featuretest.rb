@@ -54,9 +54,13 @@ p oyster.add_money(10)
 # p "FAIL" if oyster.log.empty?
 # p "should return an empty log of journeys"
 # p 'FAIL' if !oyster.log.empty?
-p "should store one journey in a hash"
-p oyster.log
-p oyster.touch_in("shoreditch")
-p oyster.touch_out("picadilly")
-p oyster.log
-p 'FAIL' if oyster.log[-1] != {entry_station: "shoreditch", exit_station: "picadilly"}
+# p "should store one journey in a hash"
+# p oyster.log
+# p oyster.touch_in("shoreditch")
+# p oyster.touch_out("picadilly")
+# p oyster.log
+# p 'FAIL' if oyster.log[-1] != {entry_station: "shoreditch", exit_station: "picadilly"}
+
+# part 13
+p 'expect to fail'
+p station = Station.new
