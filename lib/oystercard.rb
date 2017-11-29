@@ -1,5 +1,5 @@
 class Oystercard
-	attr_reader :balance, :entry_station, :exit_station, :log
+	attr_reader :balance, :entry_station, :exit_station
 	BALANCE_LIMIT = 90
 	MINIMUM_BALANCE = 0
 	MINIMUM_FARE = 2

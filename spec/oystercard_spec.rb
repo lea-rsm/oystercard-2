@@ -4,12 +4,19 @@ describe Oystercard do
 	it { is_expected.to respond_to(:add_money).with(1).argument }
 	it { is_expected.to respond_to(:touch_in).with(1).argument }
 	it { is_expected.to respond_to(:touch_out).with(1).argument }
+	it { is_expected.to respond_to(:log)}
 
 	let(:entry_station) { double(:entry_station) }
 	let(:exit_station) { double(:exit_station) }
 
 	ADD_MONEY = 60
 	TEST_DEDUCT_MONEY = 2
+
+	describe "#initalize" do
+		it "should check that the card has an empty list of journey by default" do
+			expect(subject.log).to be_empty
+		end
+	end
 
 	describe '#balance' do
 		it 'has no money initially' do
