@@ -49,6 +49,8 @@ p oyster.add_money(10)
 # p 'FAIL' if oyster.entry_station != 'shoreditch'
 
 #part 12
-p oyster.touch_in("shoreditch")
-p oyster.touch_out("picadilly")
-p "FAIL" if oyster.log.empty?
+# p oyster.touch_in("shoreditch")
+# p oyster.touch_out("picadilly")
+# p "FAIL" if oyster.log.empty?
+p "should return an empty log of journeys"
+p 'FAIL' if !oyster.log.empty?
