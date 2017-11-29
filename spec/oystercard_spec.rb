@@ -44,6 +44,12 @@ describe Oystercard do
       expect { subject.touch_in(entry_station) }.to raise_error 'Insufficient Funds!'
     end
 
+    it "should raise error if you touch in without touching out" do
+      subject.add_money(50)
+      subject.touch_in(entry_station)
+      expect{ subject.touch_in(entry_station)}.to raise_error "You did not touch out"
+    end
+
     describe '#touch out' do
       before do
         subject.add_money(ADD_MONEY)
@@ -82,7 +88,7 @@ describe Oystercard do
 
     it 'should store a journey' do
       subject.touch_out(exit_station)
-      expect(subject.log[-1]).to eq ({ entry_station => exit_station })
+      expect(subject.log[-1]).to eq ({ entry_station: entry_station, exit_station: exit_station})
     end
   end
 end
