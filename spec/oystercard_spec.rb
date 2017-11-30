@@ -1,4 +1,5 @@
-require 'oystercard.rb'
+require 'oystercard'
+require 'journey'
 
 describe Oystercard do
   it { is_expected.to respond_to(:add_money).with(1).argument }
@@ -8,6 +9,7 @@ describe Oystercard do
 
   let(:entry_station) { double(:entry_station) }
   let(:exit_station) { double(:exit_station) }
+  # let(:journey) {double(:my_journey, :start => "a", :end => "b")}
 
   ADD_MONEY = 60
   TEST_DEDUCT_MONEY = 2
@@ -50,6 +52,11 @@ describe Oystercard do
       expect{ subject.touch_in(entry_station)}.to raise_error "You did not touch out"
     end
 
+    # it "should record a station when touched in" do
+    #   subject.add_money(50)
+    #   expect { subject.touch_in(entry_station) }.to change {subject.log}.to eq entry_station
+    # end
+
     describe '#touch out' do
       before do
         subject.add_money(ADD_MONEY)
@@ -65,10 +72,10 @@ describe Oystercard do
         expect { subject.touch_out(exit_station) }.to change { subject.balance }.by(-Oystercard::MINIMUM_FARE)
       end
 
-      it 'should store exit station' do
-        subject.touch_out(exit_station)
-        expect(subject.exit_station).to eq exit_station
-      end
+      # it 'should store exit station' do
+      #   subject.touch_out(exit_station)
+      #   expect(subject.exit_station).to eq exit_station
+      # end
 
       it "should raise error when you touch out without touching in" do
         subject.touch_out(exit_station)
@@ -83,17 +90,16 @@ describe Oystercard do
       subject.touch_in(entry_station)
     end
 
-    it 'remembers the station it was last tapped at' do
-      expect(subject.entry_station).to eq entry_station
-    end
+    # it 'remembers the station it was last tapped at' do
+    #   expect(subject.entry_station).to eq entry_station
+    # end
 
     it 'forgets entry station upon touching out' do
-      expect { subject.touch_out(exit_station) }.to change { subject.entry_station }.to be nil
+      expect { subject.touch_out(exit_station) }.to change { subject.current_journey }.to be nil
     end
 
     it 'should store a journey' do
-      subject.touch_out(exit_station)
-      expect(subject.log[-1]).to eq ({ entry_station: entry_station, exit_station: exit_station})
+      expect{subject.touch_out(exit_station)}.to change {subject.log.size}.by(1)
     end
   end
 end
