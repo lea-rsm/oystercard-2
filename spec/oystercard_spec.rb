@@ -69,6 +69,11 @@ describe Oystercard do
         subject.touch_out(exit_station)
         expect(subject.exit_station).to eq exit_station
       end
+
+      it "should raise error when you touch out without touching in" do
+        subject.touch_out(exit_station)
+        expect{subject.touch_out(exit_station)}.to raise_error "You have not touched in a station first"
+      end
     end
   end
 

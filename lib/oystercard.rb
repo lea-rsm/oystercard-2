@@ -1,8 +1,7 @@
 class Oystercard
   attr_reader :balance, :entry_station, :exit_station, :log
   BALANCE_LIMIT = 90
-  MINIMUM_BALANCE = 0
-  MINIMUM_FARE = 2
+  MINIMUM_FARE = 1
 
   def initialize
     @balance = 0
@@ -23,6 +22,7 @@ class Oystercard
   end
 
   def touch_out(exit_station)
+    raise "You have not touched in a station first" if !in_journey?
     deduct(MINIMUM_FARE)
     @exit_station = exit_station
     @log << { entry_station: entry_station, exit_station: exit_station }
