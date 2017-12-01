@@ -31,6 +31,7 @@ class Oystercard
   def in_journey?
     !@current_journey.nil?
   end
+  #test
 
   private
 
